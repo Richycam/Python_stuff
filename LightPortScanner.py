@@ -1,14 +1,24 @@
 import socket
+import time
 
-ip = input("IP you want to scan? \n")
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+target = input('IP to Scan: \n ')
+target_ip = socket.gethostbyname(target)
+print('SCANNING:', target_ip)
 
-sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-
-for port in range(100):
+def port_scan(port):
     try:
-        sock.connect_ex((ip,port))
-        if sock.connect_ex == 0:
-            print('--OPEN-- Port open :',ip,port)
+        sock.connect((target_ip, port))
+        return True
     except:
-        print('--CLOSED-- Port Closed :',ip,port)
+        return False
 
+start = time.time()
+for port in range(5): 
+    if port_scan(port):
+        print(f'Port {port} is open')
+    else:
+        print(f'Port {port} is closed')
+
+end = time.time()
+print(f'Time taken: {end - start:.2f} seconds')
