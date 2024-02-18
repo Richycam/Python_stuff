@@ -14,7 +14,7 @@ def port_scan(port):
         return False
 
 start = time.time()
-for port in range(5): 
+for port in range(5000): 
     if port_scan(port):
         print(f'Port {port} is open')
     else:
