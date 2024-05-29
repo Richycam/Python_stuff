@@ -1,5 +1,7 @@
 import random
 
+#please excuse the amount of variables 
+#was my first project
 
 mylist = ["Computer choses scissors","Computer choses Rock","Computer choses Paper"]
 player = input("Rock Paper or Scissors \n")
